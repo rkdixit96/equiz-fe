@@ -7,6 +7,8 @@ import LoginForm from '../LoginForm/LoginForm';
 
 import QuestionContainer from '../QuestionContainer/QuestionContainer';
 
+import LeaderBoard from '../LeaderBoard/LeaderBoard';
+
 class Body extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +25,7 @@ class Body extends Component {
       userAnswers: '',
       userId: '',
       page: 'login',
+      topScores: '',
     };
 
     this.onLogin = this.onLogin.bind(this);
@@ -58,8 +61,13 @@ class Body extends Component {
       }),
     }).then((resp) => {
       resp.json().then(() => {
-        this.setState({
-          page: 'scoreBoard',
+        fetch('/getTopScores').then((topScores) => {
+          topScores.json().then((topJson) => {
+            this.setState({
+              topScores: topJson.res,
+              page: 'scoreBoard',
+            });
+          });
         });
       });
     });
@@ -89,7 +97,7 @@ class Body extends Component {
     if (this.state.page === 'scoreBoard') {
       return (
         <div>
-          Scoreboard
+          <LeaderBoard topScores={this.state.topScores} userName={this.state.userName} />
         </div>
       );
     }
