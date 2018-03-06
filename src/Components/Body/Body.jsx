@@ -5,6 +5,8 @@ import './Body.css';
 import WelcomeBox from '../WelcomeBox/WelcomeBox';
 import LoginForm from '../LoginForm/LoginForm';
 
+import QuestionContainer from '../QuestionContainer/QuestionContainer';
+
 class Body extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +21,7 @@ class Body extends Component {
       userName: '',
       questions: '',
       userAnswers: '',
+      userId: '',
       page: 'login',
     };
 
@@ -38,6 +41,7 @@ class Body extends Component {
           userName,
           questions: value.questions,
           userAnswers: value.res[0].answers,
+          userId: value.res[0].id,
           page: 'questions',
         });
       });
@@ -60,6 +64,7 @@ class Body extends Component {
       return (
         <div>
           {this.state.userName}
+          <QuestionContainer questions={this.state.questions} userAnswers={this.state.userAnswers} userId={this.state.userId} />
 
         </div>
       );
