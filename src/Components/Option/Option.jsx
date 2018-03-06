@@ -19,6 +19,7 @@ class Option extends Component {
       optionId: props.optionId,
       questionId: props.questionId,
       userId: props.userId,
+      checked: props.checked,
     };
   }
 
@@ -32,6 +33,10 @@ class Option extends Component {
     fetch('/selectOption', {
       method: 'POST',
       body: JSON.stringify(data),
+    }).then(() => {
+      this.setState({
+        checked: true,
+      });
     });
   }
 
@@ -44,6 +49,7 @@ class Option extends Component {
           type="radio"
           value={this.state.optionId}
           name="question"
+          checked={this.state.checked}
           onChange={this.handleOptionChange.bind(this)}
         />
         {this.props.text}

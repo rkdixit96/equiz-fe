@@ -23,7 +23,16 @@ class Question extends Component {
     };
   }
 
-  populateOptions = (options) => options.map(value => <Option text={value[Object.keys(value)[0]]} optionId={Object.keys(value)[0]} questionId={this.state.id}  userId={this.props.userId}/>);
+  checkedBasedOnAnswer=(optionText)=>{
+      if(this.props.userAnswer === optionText){
+          return true
+      }
+      return false
+  }
+
+  
+
+  populateOptions = (options) => options.map(value => <Option text={value[Object.keys(value)[0]]} optionId={Object.keys(value)[0]} questionId={this.state.id}  userId={this.props.userId} checked={this.checkedBasedOnAnswer(value[Object.keys(value)[0]])}/>);
 
 
   render() {

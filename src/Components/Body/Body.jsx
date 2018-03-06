@@ -19,7 +19,6 @@ class Body extends Component {
       text: 'default',
     };
     this.state = {
-      text: props.text,
       userName: '',
       questions: '',
       userAnswers: '',
@@ -64,12 +63,23 @@ class Body extends Component {
         fetch('/getTopScores').then((topScores) => {
           topScores.json().then((topJson) => {
             this.setState({
-              topScores: topJson.res,
+              topScores: topJson.topScores,
               page: 'scoreBoard',
             });
           });
         });
       });
+    });
+  }
+
+  playAgain() {
+    this.setState({
+      userName: '',
+      questions: '',
+      userAnswers: '',
+      userId: '',
+      page: 'login',
+      topScores: '',
     });
   }
 
@@ -98,6 +108,7 @@ class Body extends Component {
       return (
         <div>
           <LeaderBoard topScores={this.state.topScores} userName={this.state.userName} />
+          <input type="button" value="Play again" onClick={this.playAgain.bind(this)} />
         </div>
       );
     }

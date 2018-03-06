@@ -15,10 +15,31 @@ class QuestionContainer extends Component {
     };
     this.state = {
       userId: props.userId,
+      userAnswers: props.userAnswers,
     };
+
+    this.getUserAnserBasedOnId = this.getUserAnserBasedOnId.bind(this)
   }
 
-  populateQuestions = questions => questions.map(value => <Question question={value.questionText} options={value.options} id={value.id} userId={this.state.userId}  />);
+  getUserAnserBasedOnId(id){
+    for(let userInd=0;userInd<this.state.userAnswers.length;userInd+=1){
+        const currId = this.state.userAnswers[userInd].questionId;
+        const currAns =this.state.userAnswers[userInd].answer;
+        if(currId===id){
+            return currAns;
+        }
+
+    }
+    return "No answer";
+    //   this.state.userAnswers.forEach(userAns=>{
+    //       if(userAns.questionId===id){
+    //           return userAns.answer;
+    //       }
+    //   })
+    //   return "No answer";
+  }
+
+  populateQuestions = questions => questions.map(value => <Question question={value.questionText} options={value.options} id={value.id} userId={this.state.userId} userAnswer={this.getUserAnserBasedOnId(value.id)}  />);
 
   render() {
     return (
