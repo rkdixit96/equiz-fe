@@ -1,0 +1,22 @@
+.Body{
+    background-color: #16214e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+}
+
+.question-container{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+}
+.center-card{
+    display: flex;
+    flex-direction: row;
+    width:50%;
+    height: 50%;
+    
+}

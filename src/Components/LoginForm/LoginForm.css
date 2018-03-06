@@ -1,0 +1,16 @@
+
+.LoginForm{
+    width:50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}
+
+.centering{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}

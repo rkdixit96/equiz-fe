@@ -1,0 +1,20 @@
+.WelcomeBox{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #44c7f5;
+}
+
+.welcome-text{
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.other-text{
+    display: flex;
+    justify-content: center;
+
+}
