@@ -48,6 +48,23 @@ class Body extends Component {
     });
   }
 
+  calculateScore() {
+    const userId = this.state.userId;
+    fetch('/calculateScore', {
+      mode: 'no-cors',
+      method: 'POST',
+      body: JSON.stringify({
+        userId,
+      }),
+    }).then((resp) => {
+      resp.json().then(() => {
+        this.setState({
+          page: 'scoreBoard',
+        });
+      });
+    });
+  }
+
 
   render() {
     if (this.state.page === 'login') {
@@ -65,7 +82,14 @@ class Body extends Component {
         <div>
           {this.state.userName}
           <QuestionContainer questions={this.state.questions} userAnswers={this.state.userAnswers} userId={this.state.userId} />
-
+          <input type="button" value="Calculate Score" onClick={this.calculateScore.bind(this)} />
+        </div>
+      );
+    }
+    if (this.state.page === 'scoreBoard') {
+      return (
+        <div>
+          Scoreboard
         </div>
       );
     }
