@@ -8,19 +8,23 @@ class ScoreCard extends Component {
     ScoreCard.propTypes = {
       userName: PropTypes.string,
       score: PropTypes.string,
+      count: PropTypes.string,
     };
     ScoreCard.defaultProps = {
       userName: 'default',
       score: '0',
+      count: '0',
     };
     this.state = {
       userName: props.userName,
       score: props.score,
+      count: props.count,
     };
   }
   render() {
     return (
       <div className="ScoreCard">
+        {this.state.count}
         <div className="ScoreCard-text">
           {this.state.userName}
         </div>

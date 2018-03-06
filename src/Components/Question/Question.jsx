@@ -38,14 +38,16 @@ class Question extends Component {
   render() {
     return (
       <div className="Question">
+          <div>
+              Question 1
+              </div>
         <div className="question-statement">
           {this.state.question}
         </div>
-        <div>
-          <form>
+    
+          <form className="options">
               {this.populateOptions(this.props.options)}
             </form>
-        </div>
       </div>
     );
   }

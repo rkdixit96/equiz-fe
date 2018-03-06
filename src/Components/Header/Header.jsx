@@ -6,20 +6,25 @@ class Header extends Component {
   constructor(props) {
     super(props);
     Header.propTypes = {
-      text: PropTypes.string,
+      title: PropTypes.string,
+      userName: PropTypes.string,
+
     };
     Header.defaultProps = {
-      text: 'default',
+      title: '',
+      userName: '',
     };
     this.state = {
-      text: props.text,
+      title: props.title,
+      userName: props.userName,
+
     };
   }
   render() {
     return (
       <div className="Header">
-        <div className="header-text">
-          {this.state.text}
+        <div className="header-title">
+          {this.state.title}
         </div>
       </div>
     );

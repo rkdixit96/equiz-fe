@@ -43,17 +43,18 @@ class Option extends Component {
 
   render() {
     return (
-
-      <label>
-        <input
-          type="radio"
-          value={this.state.optionId}
-          name="question"
-          checked={this.state.checked}
-          onChange={this.handleOptionChange.bind(this)}
-        />
-        {this.props.text}
-      </label>
+      <div className="Option">
+        <label>
+          <input
+            type="radio"
+            value={this.state.optionId}
+            name="question"
+            checked={this.state.checked}
+            onChange={this.handleOptionChange.bind(this)}
+          />
+          {this.props.text}
+        </label>
+      </div>
 
 
     );

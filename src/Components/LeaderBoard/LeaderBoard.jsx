@@ -18,12 +18,24 @@ class LeaderBoard extends Component {
     };
   }
 
-  populateScoreCards = scoreCards => scoreCards.map(value => <ScoreCard userName={value.userName} score={value.score}  />);
+  populateScoreCards = scoreCards =>{
+    let count = 0;
+    return scoreCards.map(value =>{
+      count+=1;
+      return(
+        <ScoreCard userName={value.userName} score={value.score} count={count} />
+      );
+    });
+  } 
 
   render() {
     return (
       <div className="LeaderBoard">
         <div className="LeaderBoard-text">
+          <div>
+            LeaderBoard
+            </div>
+
           {this.populateScoreCards(this.props.topScores)}
         </div>
       </div>
