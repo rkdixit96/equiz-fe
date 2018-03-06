@@ -23,7 +23,7 @@ class Question extends Component {
     };
   }
 
-  populateOptions = (options) => options.map(value => <Option text={value[Object.keys(value)[0]]} optionId={Object.keys(value)[0]} questionId={this.state.id}  userName={this.state.userName}/>);
+  populateOptions = (options) => options.map(value => <Option text={value[Object.keys(value)[0]]} optionId={Object.keys(value)[0]} questionId={this.state.id}  userId={this.props.userId}/>);
 
 
   render() {

@@ -18,8 +18,21 @@ class Option extends Component {
       text: props.text,
       optionId: props.optionId,
       questionId: props.questionId,
-      userName: props.userName,
+      userId: props.userId,
     };
+  }
+
+  handleOptionChange() {
+    const data = {
+      userId: this.state.userId,
+      questionId: this.state.questionId,
+      answer: this.state.text,
+    };
+    console.log(data);
+    fetch('/selectOption', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
   }
 
 
@@ -31,7 +44,7 @@ class Option extends Component {
           type="radio"
           value={this.state.optionId}
           name="question"
-
+          onChange={this.handleOptionChange.bind(this)}
         />
         {this.props.text}
       </label>
